@@ -1,0 +1,159 @@
+/*
+================================================== GENERAL =====
+*/
+* {
+  box-sizing: border-box;
+  font-size: 12px;
+}
+body {
+  background-color: aliceblue;
+}
+header, footer {
+  width: 100%;
+}
+.row, nav, main {
+  width: 1000px;
+  margin: 0 auto;
+}
+.row::after, nav::after, main::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+ul, ol {
+  list-style: none;
+}
+ul li, ol li {
+  display: inline-block;
+  cursor: pointer;
+}
+ol li {
+  padding: 5px;
+  border: 1px solid slateblue;
+  border-radius: 3px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.logo {
+  cursor: pointer;
+}
+/*
+================================================== HEADER =====
+*/
+header {
+  height: 50px;
+  color: aliceblue;
+  font-weight: bold;
+  line-height: 50px;
+  background-color: slateblue;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px 0 gray;
+}
+header li {
+  margin: 0 20px;
+}
+/*
+================================================== MAIN =====
+*/
+main section {
+  min-height: 300px;
+}
+main section.left {
+  width: 25%;
+}
+main section.right {
+  width: 75%;
+}
+/*
+===== LEFT COLUMN =====
+*/
+h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2em;
+}
+#loading {
+  color: slateblue;
+}
+section.articles {
+  position: relative;
+}
+div.articles {
+  position: absolute;
+  float: left;
+}
+article {
+  padding: 5px;
+  background-color: ghostwhite;
+  border: 1px solid slateblue;
+  border-radius: 5px;
+  margin: 2px 0;
+}
+article.active {
+  color: aliceblue;
+  background-color: slateblue;
+}
+article h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-top: 300px;
+}
+.pagination li {
+  text-align: center;
+  color: aliceblue;
+  background-color: slateblue;
+  margin: 1px 1px;
+}
+.pagination li.active {
+  font-weight: bold;
+  color: slateblue;
+  background-color: aliceblue;
+  border: 1px solid slateblue;
+}
+/*
+===== RIGTH COLUMN =====
+*/
+h1 {
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: bold;
+  padding: 10px;
+}
+.theArticle .author {
+  line-height: 2em;
+  text-align: center;
+  font-style: italic;
+  text-decoration: underline;
+}
+.theArticle .author::before {
+  content: 'email the author: ';
+}
+.theArticle .content {
+  line-height: 1.5em;
+  padding: 20px;
+}
+/*
+================================================== FOOTER =====
+*/
+footer {
+  line-height: 4em;
+  margin-top: 50px;
+}
+footer li {
+  margin: 0 15px;
+}

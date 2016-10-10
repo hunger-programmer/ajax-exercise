@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>CodersLab</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <p class="logo left">
+      Moja piękna strona &lt;3
+    </p>
+    <ul class="right">
+      <li><a href="#">O mnie</a></li>
+      <li><a href="#">Artykuły</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main>
+
+<!-- LEFT COLUMN -->
+  <section class="left articles">
+    <h2>
+      Artykuły
+      <span id='loading'>
+        <br><br>
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Pobieranie danych</span>
+        <br><br>
+      </span>
+    </h2>
+
+    <!-- ARTICLES LIST -->
+<!--
+    <div class="articles">
+
+      <article>
+        <h3>Tytuł</h3>
+        <p class="author">
+          email@example.com
+        </p>
+      </article>
+
+    </div>
+ -->
+
+    <!-- PAGINATION -->
+    <div class="pageNavigation">
+      <ol class="pagination">
+        <li id='prev'>&lt;</li>
+        <!-- <li>1</li> -->
+        <li id='next'>&gt;</li>
+      </ol>
+    </div>
+
+  </section> <!-- LEFT COLUMN === END -->
+
+<!-- RIGHT COLUMN -->
+  <section class="right showArticle">
+<!--
+    <div class="theArticle">
+      <h1>Tytuł</h1>
+      <p class="author">
+        email@example.com
+      </p>
+      <p class="content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+ -->
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="row">
+    <ul class="social left">
+      <li id='deleteCookies'>[delete cookies]</li>
+      <li><a href="#">FB</a></li>
+      <li><a href="#">G+</a></li>
+      <li><a href="#">LI</a></li>
+      <li><a href="#">TT</a></li>
+    </ul>
+    <p class="logo right">
+      Moja piękna strona &lt;3
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
