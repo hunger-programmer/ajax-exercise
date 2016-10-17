@@ -10,22 +10,21 @@ $(document).ready(function() {
     currentPageNo = 0; // zmienna przechowująca numer aktualnie wyświetlanej strony w lewej szpalcie
 
 // sprawdzenie cookie
-  var myCookie = getCookie('id'); // pobieram cookie
-  var cookiePresent = (!isNaN(myCookie) && !(myCookie.length == 0)) ? true : false; // zapisuję zmienną, czy mam poprawne dane z cookie
+  var myCookie = getCookie('id'); // pobieram cookie //ID nie jest dobrą nazwą dla cookie - id jest identyfikatorem pojedynczego zasobu wprowadza zamieszanie
+  var cookiePresent = (!isNaN(myCookie) && !(myCookie.length == 0)) ? true : false; // zapisuję zmienną, czy mam poprawne dane z cookie - dwa tipy: wpisz sobie w konsole w przeglądarce: '(!isNaN(myCookie) && !(myCookie.length == 0))' i drugi - funkcja getCookie jak nie ma zapisanej wartosci w ciastku - zwraca pusty string "myCookie != ''" zrobi to samo :)
 
 // ========== POBIERANIE DANYCH ============================================================
 
+//Tutaj możesz użyć czegoś innego - musisz sobie zgoglać - wystarczy ze parametrem funkcji done bedzie nazwa funkcji ktora ma sie wykonac - zobacz jak to zadziała
   $.ajax({ // pobieram listę artykułów, żeby wyświetlić je w lewej szpalcie
     url: url,
     type: 'GET'
-  }).done(function(response){
-    artArray = response; // zapisuję pobrane dane do tablicy
-    displayArticles(); // aktualizuję zawartość strony
-  }).fail(function(error){
+  }).done(displayArticles)
+  .fail(function(error){
     ajaxFailed();
     console.log(error);
   });
-  function displayArticles() { // reszta kodu wewnątrz funkcji odpalanej po poprawnym pobraniu danych z serwera
+  function displayArticles(response) { // reszta kodu wewnątrz funkcji odpalanej po poprawnym pobraniu danych z serwera
 
 // ========== LISTA ARTYKUŁÓW ============================================================
 
@@ -35,7 +34,7 @@ $(document).ready(function() {
 
       var $newPage = $('<div class="articles">'); // tworzę nowy element div = strona
       $newPage.data('page',pageNo); // ustawiam atrybut data-page z numerem strony
-      var artArrForNewPage = artArray.splice(0,n); // wycinam z tablicy pobranej z serwera artykuły do wyświetlenia na aktualnej stronie
+      var artArrForNewPage = artArray.splice(0,n); // wycinam z tablicy pobranej z serwera artykuły do wyświetlenia na aktualnej stronie // zakazdym razem pobierasz pierwsze 8 elementów - musiz uzeleżnic pobierane elmeenty od okrazenia petli
 
       // dodaję do strony artykuły
       $.each(artArrForNewPage, function(artNo,article) { // dla każdego artykułu z aktualnej strony:
@@ -100,11 +99,11 @@ $(document).ready(function() {
 // ========== OBSŁUGA PAGINACJI ============================================================
 
     $pagination.on('click', 'li', function() {
-      var clickIndex = $(this).html();
+      var clickIndex = $(this).html(); //Lepiej jak i tak renderujesz te elementy - użyj atrybutu data-pagination="x" - zczytywanie wartości z html słabo działa czasem - jak ktoś ma inny charset bądź coś - zwrócisz krzaczki a nie wartość :)
       if ($.isNumeric(clickIndex)) { // jeśli kliknięto w przycisk konkretnej strony
         updatePagination(currentPageNo, clickIndex);
         currentPageNo = clickIndex;
-      } else if (clickIndex == '&lt;') { // jeśli kliknięto przycisk prev
+      } else if (clickIndex == '&lt;') { // jeśli kliknięto przycisk prev ///data-pagination = first/last albo konkretny numer strony :)
         clickIndex = parseInt(currentPageNo) - 1;
         if (clickIndex > 0) {
           updatePagination(currentPageNo, clickIndex);
@@ -146,7 +145,7 @@ $(document).ready(function() {
 
   // aktualizacja paginacji
   function updatePagination(currentPageNo, clickIndex) {
-    $pagination.children().eq(currentPageNo).removeClass('active');
+    $pagination.children().eq(currentPageNo).removeClass('active'); //często korzystasz z $pagination.children() - wrzuc do zmiennej bo przegladarka za kazdym razem przeszukuje zawartość pagiation() a tych elementów jest już nieco
     $pagination.children().eq(clickIndex).addClass('active');
     var $currentPage = $articles.children().eq(currentPageNo),
       $pageToShow = $articles.children().eq(clickIndex);
